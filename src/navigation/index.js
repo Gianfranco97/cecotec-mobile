@@ -1,19 +1,16 @@
 import React from 'react';
 // import { enableScreens } from 'react-native-screens';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation'
-import { createStackNavigator } from '@react-navigation/stack';
-import Products from '../screens/Products'
-import SingleProduct from '../screens/SingleProduct'
-
+import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
+import {createStackNavigator} from '@react-navigation/stack';
+import Products from '../screens/Products';
+import SingleProduct from '../screens/SingleProduct';
 
 const Stack = createStackNavigator();
 // enableScreens();
 
 function MyStack() {
   return (
-    <Stack.Navigator
-      initialRouteName="Products"
-    >
+    <Stack.Navigator initialRouteName="Products">
       <Stack.Screen
         name="Products"
         component={Products}
@@ -43,4 +40,4 @@ function MyStack() {
 
 // const AppNavigator = createAppContainer(IndexApp)
 
-export default MyStack
+export default MyStack;
