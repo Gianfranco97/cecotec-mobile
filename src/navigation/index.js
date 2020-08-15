@@ -1,21 +1,46 @@
-import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation'
+import React from 'react';
+// import { enableScreens } from 'react-native-screens';
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation'
+import { createStackNavigator } from '@react-navigation/stack';
 import Products from '../screens/Products'
 import SingleProduct from '../screens/SingleProduct'
 
-const ProductsStack = createStackNavigator({
-  Products: Products,
-  SingleProduct: SingleProduct,
-})
 
-const IndexApp = createBottomTabNavigator(
-  {
-    ProductsStack
-  },
-  {
-    initialRouteName: 'ProductsStack',
-  },
-)
+const Stack = createStackNavigator();
+// enableScreens();
 
-const AppNavigator = createAppContainer(IndexApp)
+function MyStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Products"
+    >
+      <Stack.Screen
+        name="Products"
+        component={Products}
+        options={{
+          title: 'My Products',
+        }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={SingleProduct}
+        options={{
+          title: 'Lalalalala',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
 
-export default AppNavigator
+// const IndexApp = createBottomTabNavigator(
+//   {
+//     ProductsStack: MyStack()
+//   },
+//   {
+//     initialRouteName: 'ProductsStack',
+//   },
+// )
+
+// const AppNavigator = createAppContainer(IndexApp)
+
+export default MyStack
