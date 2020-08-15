@@ -29,6 +29,18 @@
       "name": "Batarang",
       "price": 120,
       "quantity": 15
+    },
+    {
+      "id": 6,
+      "name": "Millennium Falcon",
+      "price": 850,
+      "quantity": 1
+    },
+    {
+      "id": 7,
+      "name": "Portal Gun",
+      "price": 420,
+      "quantity": 2
     }
   ]
 }
