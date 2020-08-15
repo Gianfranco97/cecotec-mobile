@@ -10,6 +10,9 @@ import {
 import {Image} from 'react-native';
 import api from '../../utils/api';
 import logo from '../../assets/img/cecotec-logo.jpg';
+import Loading from '../../components/Loading';
+
+import styles from './styles';
 
 class ProductScreen extends React.Component {
   state = {
@@ -34,11 +37,15 @@ class ProductScreen extends React.Component {
   }
 
   render() {
-    const {data} = this.state;
+    const {data, loading} = this.state;
+
+    if (loading) {
+      return <Loading />;
+    }
 
     return (
       <Layout style={{flex: 1}}>
-        <Layout style={{justifyContent: "center", alignItems: "center", height: 100}}>
+        <Layout style={styles.imageContainer}>
           <Image source={logo} />
         </Layout>
         <List
@@ -47,7 +54,7 @@ class ProductScreen extends React.Component {
           renderItem={({item, index}) => (
             <ListItem
               title={() => <Text category="h6">{item.name}</Text>}
-              style={{height: 90}}
+              style={styles.itemContainer}
               accessoryLeft={(props) => (
                 <Icon {...props} name="shopping-bag-outline" />
               )}
