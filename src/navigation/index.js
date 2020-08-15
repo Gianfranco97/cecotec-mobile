@@ -19,10 +19,10 @@ function MyStack() {
         }}
       />
       <Stack.Screen
-        name="Profile"
+        name="SingleProduct"
         component={SingleProduct}
         options={{
-          title: 'Lalalalala',
+          title: '',
         }}
       />
     </Stack.Navigator>

@@ -7,6 +7,7 @@ import {
   List,
   ListItem,
 } from '@ui-kitten/components';
+import PropTypes from 'prop-types';
 import {Image} from 'react-native';
 import api from '../../utils/api';
 import logo from '../../assets/img/cecotec-logo.jpg';
@@ -15,6 +16,10 @@ import Loading from '../../components/Loading';
 import styles from './styles';
 
 class ProductScreen extends React.Component {
+  static propTypes = {
+    navigation: PropTypes.object.isRequired,
+  };
+
   state = {
     loading: true,
     data: [],
@@ -38,6 +43,7 @@ class ProductScreen extends React.Component {
 
   render() {
     const {data, loading} = this.state;
+    const {navigation} = this.props;
 
     if (loading) {
       return <Loading />;
@@ -51,10 +57,11 @@ class ProductScreen extends React.Component {
         <List
           data={data}
           ItemSeparatorComponent={Divider}
-          renderItem={({item, index}) => (
+          renderItem={({item}) => (
             <ListItem
               title={() => <Text category="h6">{item.name}</Text>}
               style={styles.itemContainer}
+              onPress={() => navigation.navigate('SingleProduct', {...item})}
               accessoryLeft={(props) => (
                 <Icon {...props} name="shopping-bag-outline" />
               )}
